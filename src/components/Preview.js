@@ -1,4 +1,4 @@
-import { db } from '@/pages/firebase-config';
+import { db } from '@/components/firebase-config';
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { FaCopy, FaHeart } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md'

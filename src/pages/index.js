@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { db } from '@/pages/firebase-config';
+import { db } from '@/components/firebase-config';
 import { collection, onSnapshot, query } from "firebase/firestore";
 import Preview from '@/components/Preview';
 import ImageGrid from '@/components/ImageGrid';
