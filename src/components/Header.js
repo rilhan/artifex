@@ -23,6 +23,10 @@ export default function Header() {
         setAuthWindow(true)
     }
 
+    function signOutToggle() {
+        setAccountPopup(!accountPopup)
+    }
+
     return (
         <div>
             {authWindow && <AuthWindow /> }     
@@ -32,7 +36,7 @@ export default function Header() {
                     <motion.div whileTap={{ scale: 0.7 }}><Link href='/'><AiOutlineHome /></Link></motion.div>
                     <motion.div whileTap={{ scale: 0.7 }}><Link href='/guides'><BsBook /></Link></motion.div>
                     <motion.div whileTap={{ scale: 0.7 }}><Link href='/likes'><AiOutlineHeart /></Link></motion.div>
-                    <motion.div whileTap={{ scale: 0.7 }}><VscAccount onClick={authToggle} /></motion.div>
+                    <motion.div whileTap={{ scale: 0.7 }}>{user != null ? <VscAccount onClick={signOutToggle} /> : <VscAccount onClick={authToggle} /> }</motion.div>
                 </div>
                 :
                 <header className='mb-14'>
@@ -53,7 +57,7 @@ export default function Header() {
                             {user != null ?
                                 <div className='w-full h-full flex justify-center items-center'>
                                     <div className="h-full flex items-center justify-end">
-                                        <button onClick={() => { setAccountPopup(!accountPopup) }} className="h-7 w-7 rounded-full ml-2 text-xs md:text-sm bg-zinc-800 border  border-zinc-700 mr-2 flex items-center justify-center opacity-80 hover:bg-white hover:text-black" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r0:" data-state="closed">
+                                        <button onClick={signOutToggle} className="h-7 w-7 rounded-full ml-2 text-xs md:text-sm bg-zinc-800 border  border-zinc-700 mr-2 flex items-center justify-center opacity-80 hover:bg-white hover:text-black" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r0:" data-state="closed">
                                             {user.email.slice(0, 1).toUpperCase()}
                                         </button>
                                     </div>
