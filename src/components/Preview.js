@@ -57,7 +57,7 @@ export default function Preview({ setPreview, selectedImage, user }) {
         <div className='w-full min-h-screen absolute inset-0 z-30' onClick={togglePreview}></div>
         <div className='z-30 bg-zinc-800 text-white rounded-xl w-full h-full flex flex-col md:flex-row overflow-hidden md:w-9/12'>
           <div className='w-full flex justify-center items-center md:w-1/2 md:p-1'>
-            <img src={selectedImage.url} className='rounded-lg' />
+            <img src={selectedImage.url} className='rounded-lg' alt="ai-generated-art" />
           </div>
           {isLoaded && <p>loaded</p>}
           <div className='w-full md:w-1/2'>

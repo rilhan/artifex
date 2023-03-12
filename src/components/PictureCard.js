@@ -40,7 +40,7 @@ export default function PictureCard({ imageObject, user }) {
         transition={{duration:0.2}}     
         className='relative group'
       >       
-        <img src={imageObject.url} className=' rounded-lg' />        
+        <img src={imageObject.url} className=' rounded-lg' alt="ai-generated-art" />        
           <div className='absolute inset-0 bg-zinc-800/40 opacity-0 text-white md:group-hover:opacity-100 md:group-hover:duration-300 cursor-pointer' >
             <div className='absolute inset-0' onClick={() => { setPreview(true) } } ></div>
             <motion.div
