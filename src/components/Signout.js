@@ -4,7 +4,7 @@ import AppContext from '@/context/AppContext'
 import { auth } from '@/components/firebase-config'
 import { signOut } from "firebase/auth"
 
-export default function Signout({setAccountPopup}) {
+export default function Signout({ setAccountPopup, devicePhone }) {
 
     const { user } = useContext(AppContext)
     const { setUser } = useContext(AppContext)
@@ -23,9 +23,9 @@ export default function Signout({setAccountPopup}) {
     }
 
     return (
-        <div> 
+        <div>
             <div className='absolute inset-0 z-40' onClick={buttonToggle}></div>
-            <div className="w-64 bg-zinc-800 fixed z-50 right-0 top-11 rounded-md flex flex-col items-start border border-zinc-700 text-white divide-y divide-zinc-700">
+            <div className={'w-64 bg-zinc-800 fixed z-50 rounded-md flex flex-col items-start border border-zinc-700 text-white divide-y divide-zinc-700 ' + (devicePhone ? 'right-0 bottom-12' : 'right-3 top-11')}>
                 <div className="w-full px-4 py-2 bg-zinc-700 bg-opacity-50 ">
                     <div className="flex items-center">
                         <div className="rounded-full w-7 h-7 bg-zinc-600 flex justify-center items-center mr-2">
