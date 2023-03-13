@@ -28,7 +28,8 @@ export default function AuthWindow() {
     function emailHandler(e) {
         setEmail(e.target.value)
     }
-    
+    // http://localhost:3000/   
+    // http://artifexart.net/
     function continueHandler() {
         const actionCodeSettings = { url: 'http://artifexart.net/', handleCodeInApp: true, };
         sendSignInLinkToEmail(auth, email, actionCodeSettings)

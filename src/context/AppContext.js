@@ -14,7 +14,7 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     setDevicePhone(isMobile)
-    setSlider(isMobile ? [2, 1, 5] : [5, 3, 8])
+    setSlider(isMobile ? [2, 1, 5] : [5, 3, 10])
 
     // listen for auth
     onAuthStateChanged(auth, (user) => { if (user) { setUser(auth.currentUser) } })

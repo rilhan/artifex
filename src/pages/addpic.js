@@ -1,15 +1,11 @@
-import { useEffect, useState, useContext } from 'react';
-import { db, storage, auth } from '@/components/firebase-config';
+import { useEffect, useState } from 'react';
+import { db, storage } from '@/components/firebase-config';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-import AppContext from '@/context/AppContext';
 import Header from '@/components/Header';
 
 export default function Addpic() {
-
-  const {user} = useContext(AppContext) 
-  const {setUser} = useContext(AppContext)  
+ 
   const [status, setStatus] = useState(false);
   const [file, setFile] = useState({});
   const [fileParams, setFileParams] = useState({
@@ -26,12 +22,6 @@ export default function Addpic() {
       setFile(event.target.files[0]);    
       setStatus(false);
       setValue({target: {id: "seed", value: event.target.files[0].name.slice(6, -4)}});
-    });
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(auth.currentUser);
-      } 
     });
   },[])
 

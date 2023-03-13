@@ -11,11 +11,10 @@ import { ref, getBlob } from 'firebase/storage';
 import AppContext from '@/context/AppContext';
 
 
-export default function Preview({ setPreview, selectedImage, user }) {
+export default function Preview({ setPreview, selectedImage, user, setCurrentTag }) {
 
   const { setAuthWindow } = useContext(AppContext)
   const [isCopied, setIsCopied] = useState(false)  
-  const [isLoaded, setIsLoaded] = useState(false);
 
   function togglePreview() {
     setPreview(false)
@@ -29,7 +28,7 @@ export default function Preview({ setPreview, selectedImage, user }) {
     setIsCopied(true)
     copy(selectedImage.prompt);
     setTimeout(() => { setIsCopied(false) }, 2000);
-  };
+  }
 
   async function addLike() {
     const docRef = doc(db, "gallery", selectedImage.id);
@@ -53,14 +52,13 @@ export default function Preview({ setPreview, selectedImage, user }) {
     <div className="w-full min-h-screen fixed inset-0 z-20 bg-zinc-900 bg-opacity-90">
       <div className='absolute w-full h-12' onClick={togglePreview}></div>
       <MdClose className='absolute top-0 left-0 w-12 h-12 text-white z-30 cursor-pointer' onClick={togglePreview} />
-      <div className='relative flex top-12 z-20 w-full max-h-[calc(100vh-48px)] overflow-hidden overflow-y-auto md:min-h-screen md:justify-center md:items-center md:top-0'>
+      <div className='relative flex top-12 z-20 w-full max-h-[calc(100vh-48px)] overflow-hidden overflow-y-auto lg:min-h-screen lg:justify-center lg:items-center lg:top-0'>
         <div className='w-full min-h-screen absolute inset-0 z-30' onClick={togglePreview}></div>
-        <div className='z-30 bg-zinc-800 text-white rounded-xl w-full h-full flex flex-col md:flex-row overflow-hidden md:w-9/12'>
-          <div className='w-full flex justify-center items-center md:w-1/2 md:p-1'>
-            <img src={selectedImage.url} className='rounded-lg' alt="ai-generated-art" />
+        <div className='z-30 bg-zinc-800 text-white rounded-xl w-full h-full flex flex-col lg:flex-row overflow-hidden lg:w-11/12 xl:w-9/12 2xl:w-8/12'>
+          <div className='w-full flex justify-center items-center lg:w-[65%] lg:p-4 lg:order-2'>
+            <img src={selectedImage.url} alt="ai-generated-art" />
           </div>
-          {isLoaded && <p>loaded</p>}
-          <div className='w-full md:w-1/2'>
+          <div className='w-full lg:w-[35%]'>
             <div className="bg-zinc-700 opacity-70 rounded-lg m-4">
               <div className="px-4 py-5">
                 <p>{selectedImage.prompt}</p>
@@ -70,7 +68,7 @@ export default function Preview({ setPreview, selectedImage, user }) {
                     whileTap={{ scale: 0.95 }}
                     className="w-1/2 h-full flex justify-center items-center rounded-lg bg-zinc-500 text-sm cursor-pointer"
                     onClick={copyPrompt}>
-                    {isCopied ? "Copied!" : "Copy"}
+                    {isCopied ? "Copied!" : "Copy prompt"}
                   </motion.div>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -94,11 +92,11 @@ export default function Preview({ setPreview, selectedImage, user }) {
             <div className="bg-zinc-700 opacity-70 rounded-lg m-4">
               <div className="px-4 py-2 flex">
                 {selectedImage.tags.map((tag, index) => (
-                  <div key={index} className='ml-1'>#{tag}</div>
+                  <div key={index} className='px-1 cursor-pointer rounded-md lg:hover:bg-zinc-300 lg:hover:text-black' onClick={ () => { togglePreview(); setCurrentTag(tag)} }>#{tag}</div>
                 ))}
               </div>
             </div>
-            <div className='px-5 pb-24 text-md md:py-2'>
+            <div className='px-5 pb-24 text-md lg:py-2'>
               <div className="flex justify-between items-center mb-1 mt-3">
                 <p className="text-sub">Sampler</p>
                 <div className="w-44 bg-area text-gray-100 rounded-md text-right"><p className="mr-3">{selectedImage.sampler}</p></div>

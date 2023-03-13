@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { db } from '@/components/firebase-config';
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import TagsScroll from '@/components/TagsScroll';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 export default function ImageGrid({ user, slider, onlyLikes }) {
 
@@ -61,7 +61,7 @@ export default function ImageGrid({ user, slider, onlyLikes }) {
             <AnimatePresence>
                 {images.map((item) => {
                     if (item.tags.includes(currentTag) || (currentTag === 'all')) {
-                        return <PictureCard key={item.id} user={user} imageObject={item} />
+                        return <PictureCard key={item.id} user={user} imageObject={item} setCurrentTag={setCurrentTag} />
                     }
                 })
                 }

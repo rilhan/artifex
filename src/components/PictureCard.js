@@ -6,7 +6,8 @@ import Preview from '@/components/Preview';
 import { motion } from 'framer-motion';
 import AppContext from '@/context/AppContext';
 
-export default function PictureCard({ imageObject, user }) {
+
+export default function PictureCard({ imageObject, user, setCurrentTag }) {
   
   const { setAuthWindow } = useContext(AppContext)
   const [preview, setPreview] = useState(false);
@@ -31,7 +32,7 @@ export default function PictureCard({ imageObject, user }) {
 
   return (
     <div>       
-      {preview && <Preview setPreview={setPreview} user={user} selectedImage={imageObject} /> }           
+      {preview && <Preview setPreview={setPreview} user={user} selectedImage={imageObject} setCurrentTag={setCurrentTag} /> }           
       <motion.div 
         layout  
         initial={{opacity: 0}}

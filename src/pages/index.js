@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { auth } from '@/components/firebase-config';
 import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 import ImageGrid from '@/components/ImageGrid';
