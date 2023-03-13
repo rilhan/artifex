@@ -54,7 +54,7 @@ export default function Preview({ setPreview, selectedImage, user, setCurrentTag
       <MdClose className='absolute top-0 left-0 w-12 h-12 text-white z-30 cursor-pointer' onClick={togglePreview} />
       <div className='relative flex top-12 z-20 w-full max-h-[calc(100vh-48px)] overflow-hidden overflow-y-auto lg:min-h-screen lg:justify-center lg:items-center lg:top-0'>
         <div className='w-full min-h-screen absolute inset-0 z-30' onClick={togglePreview}></div>
-        <div className='z-30 bg-zinc-800 text-white rounded-xl w-full h-full flex flex-col lg:flex-row overflow-hidden lg:w-11/12 xl:w-9/12 2xl:w-8/12'>
+        <div className='z-30 bg-zinc-800 text-white rounded-xl w-full h-full flex flex-col lg:flex-row overflow-hidden lg:max-w-6xl'>
           <div className='w-full flex justify-center items-center lg:w-[65%] lg:p-4 lg:order-2'>
             <img src={selectedImage.url} alt="ai-generated-art" />
           </div>

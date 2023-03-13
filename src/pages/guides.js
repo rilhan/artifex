@@ -10,6 +10,7 @@ export default function Guides() {
         <meta name="description" content="AI Art Gallery" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="logo.png" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8190924517802964" crossorigin="anonymous"></script>
       </Head>
       <Header />
       <main className='font-inter bg-zinc-800 mb-12'>        
